@@ -14,7 +14,7 @@ class BroadcastersController < ApplicationController
   private
 
   def tweets_with_periscopes(tweets)
-    periscope_tweets = tweets.select do |t|
+    tweets.select do |t|
       has_periscope = false
       t.urls.each do |u|
         if u.expanded_url.to_s.match(/periscope/)
@@ -24,7 +24,6 @@ class BroadcastersController < ApplicationController
       end
       has_periscope
     end
-    periscope_tweets
   end
 
   def embeds(tweets)
