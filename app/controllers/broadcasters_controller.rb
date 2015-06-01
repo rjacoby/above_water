@@ -9,10 +9,9 @@ class BroadcastersController < ApplicationController
   end
 
   def latest
-    if @periscope_tweets.blank?
-      return 404
+    unless @periscope_tweets.blank?
+      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s
     end
-    redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s
   end
 
   private

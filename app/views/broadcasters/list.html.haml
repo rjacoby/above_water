@@ -1,14 +1,19 @@
 .container
-%h2 Periscope Streams for #{@twitter_id}
+%h2 Periscope Streams for #{link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}"}
 .row
-  .col-md-4
-    .tweet-list
-    - @embeds.each do |k,v|
-      .tweet{data: {tweet_id: k}}
-        = raw(v.html)
-  .col-md-8
-    .periscope
-      %h3 An Awesome Periscope Goes Here
-      .grumble
-        I don't think you can IFrame Periscopes...
-      %iframe.live-view{src:  @tweets.first.urls.first.expanded_url.to_s}
+  .col-md-6
+    - if @embeds.blank?
+      .none-found
+        No recent broadcasts found.
+    - else
+      .tweet-list
+      - @embeds.each do |k,v|
+        .tweet{data: {tweet_id: k}}
+          = raw(v.html)
+
+  -# .col-md-8
+  -#   .periscope
+  -#     %h3 An Awesome Periscope Goes Here
+  -#     .grumble
+  -#       I don't think you can IFrame Periscopes...
+  -#     %iframe.live-view{src:  @tweets.first.urls.first.expanded_url.to_s}
