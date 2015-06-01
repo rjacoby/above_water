@@ -9,3 +9,6 @@
   .col-md-8
     .periscope
       %h3 An Awesome Periscope Goes Here
+      .grumble
+        I don't think you can IFrame Periscopes...
+      %iframe.live-view{src:  @tweets.first.urls.first.expanded_url.to_s}
