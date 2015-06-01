@@ -1,5 +1,5 @@
 %h2 Periscope Streams for #{@twitter_id}
 .tweet-list
-- @tweets.each do |tweet|
-  .tweet
-    = raw(@embeds[tweet.id].html)
+- @embeds.each do |k,v|
+  .tweet{data: {tweet_id: k}}
+    = raw(v.html)
