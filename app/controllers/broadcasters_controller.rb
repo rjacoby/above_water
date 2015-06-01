@@ -14,8 +14,10 @@ class BroadcastersController < ApplicationController
   private
 
   def tweets_with_periscopes(tweets)
-    tweets.select do |t|
+    cutoff_time = 24.hours.ago
+    tweets.select! do |t|
       has_periscope = false
+      next if t.created_at < cutoff_time
       t.urls.each do |u|
         if u.expanded_url.to_s.match(/periscope/)
           has_periscope = true

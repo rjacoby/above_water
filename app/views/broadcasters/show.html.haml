@@ -1,5 +1,11 @@
+.container
 %h2 Periscope Streams for #{@twitter_id}
-.tweet-list
-- @embeds.each do |k,v|
-  .tweet{data: {tweet_id: k}}
-    = raw(v.html)
+.row
+  .col-md-4
+    .tweet-list
+    - @embeds.each do |k,v|
+      .tweet{data: {tweet_id: k}}
+        = raw(v.html)
+  .col-md-8
+    .periscope
+      %h3 An Awesome Periscope Goes Here
