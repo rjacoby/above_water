@@ -1,0 +1,6 @@
+.container
+  .row
+    %h2 Lookup a Periscope User
+    .col-md-6
+      = simple_form_for :user, url: '#' do |f|
+        = f.input :twitter_handle
