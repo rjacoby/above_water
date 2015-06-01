@@ -19,6 +19,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'unicorn'
 gem 'unicorn-rails'
+gem 'twitter'
 group :development do
   gem 'better_errors'
   gem 'foreman'
