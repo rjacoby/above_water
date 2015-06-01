@@ -4,5 +4,5 @@
     .col-md-6
       = simple_form_for :user, url: '#' do |f|
         = f.input :twitter_handle
-        = f.button :button, "List", class: "btn btn-lg btn-primary"
-        = f.button :button, "Latest", class: "btn btn-lg btn-success"
+        = f.button :button, "List", class: "btn btn-lg btn-primary", id: "lookup-list"
+        = f.button :button, "Latest", class: "btn btn-lg btn-success", id: "lookup-latest"
