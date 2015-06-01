@@ -1,17 +1,38 @@
 # Main controller for finding and showing a user's recent Periscopes
 class BroadcastersController < ApplicationController
-  def show
-    @twitter_id = params[:twitter_id]
-    @tweets = ApplicationController.twitter.user_timeline(
-      @twitter_id,
-      count: 200,
-      include_rts: false,
-      exclude_replies: true
-    )
-    @embeds = embeds(tweets_with_periscopes(@tweets))
+  before_filter :set_twitter_id
+  before_filter :populate_tweets
+  before_filter :identify_periscope_tweets
+
+  def list
+    @embeds = embeds(@periscope_tweets)
+  end
+
+  def latest
+    if @periscope_tweets.blank?
+      return 404
+    end
+    redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s
   end
 
   private
+
+  def set_twitter_id
+    @twitter_id = params[:twitter_id]
+  end
+
+  def populate_tweets
+    @tweets = ApplicationController.twitter.user_timeline(
+      @twitter_id,
+      count: 100,
+      include_rts: false,
+      exclude_replies: true
+    )
+  end
+
+  def identify_periscope_tweets
+    @periscope_tweets = tweets_with_periscopes(@tweets)
+  end
 
   def tweets_with_periscopes(tweets)
     cutoff_time = 24.hours.ago
