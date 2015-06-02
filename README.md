@@ -17,6 +17,16 @@ Both functions are available as RESTful shortcut URLs:
 
 The 'latest' shortcut could be useful for a kiosk view or evergreen URL.
 
+What It Does
+------------
+I know you'll read the code anyway, but here's the basics.
+
+- Get @handle's 100 most recent Tweets
+- Isolate the Tweets within the last 24hrs that have Periscope URLs in them
+- Either redirect to most recent broadcast
+- Or retrieve [Twitter OEmbed code](https://dev.twitter.com/rest/reference/get/statuses/oembed) to show a list of the Tweets
+
+
 Ruby on Rails
 -------------
 
@@ -37,10 +47,12 @@ Set the credentials in your .env file or on Heroku as:
 
 Issues
 -------------
+- No tests
 - No caching
 - Hits rate limits
 - Minimal error checking
 - Very basic look&feel
+- Not super smart about multiple URLs in a broadcast Tweet
 - Limited by Periscope behavior
   - Cannot IFrame in a broadcast
   - Cannot currently view completed brodcasts on web - but works nicely on mobile!
