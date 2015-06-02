@@ -3,20 +3,19 @@ Above Water
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+This is a simple app that provides an easy way to find [Periscope](http://periscope.tv) broadcasts Twitter user.
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+There are two main functions:
+- List all of the user's Tweeted broadcasts in the last 24 hours
+- Go directly to the most recent Tweeted broadcasts
 
-Problems? Issues?
------------
+Shortcut URLs
+-------------
+Both functions are available as RESTful shortcut URLs:
+- /list/<twitterhandle>
+- /latest/<twitterhandle>
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+The 'latest' shortcut could be useful for a kiosk view or evergreen URL.
 
 Ruby on Rails
 -------------
@@ -30,21 +29,18 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 Getting Started
 ---------------
+You must create a [Twitter app](https://apps.twitter.com). It only needs 'read' permissions, and works with the app's token - not a user-level one, so no logins are required.
 
-Documentation and Support
--------------------------
+Set the credentials in your .env file or on Heroku as:
+- TWITTER_API_KEY
+- TWITTER_API_SECRET
 
 Issues
 -------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
--------
-
-License
--------
+- No caching
+- Hits rate limits
+- Minimal error checking
+- Very basic look&feel
+- Limited by Periscope behavior
+  - Cannot IFrame in a broadcast
+  - Cannot currently view completed brodcasts on web - but works nicely on mobile!
