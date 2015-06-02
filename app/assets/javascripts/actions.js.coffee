@@ -4,7 +4,6 @@ attachLookupButtons = ->
     handle = $('#user_twitter_handle').val()
     $(@).addClass "active"
     action = $(@).data('action')
-    console.log action
     if (handle && handle.length > 0)
       # window.location.replace("/#{action}/#{handle}/")
       Turbolinks.visit("/#{action}/#{handle}/")

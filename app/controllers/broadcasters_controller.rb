@@ -17,7 +17,7 @@ class BroadcastersController < ApplicationController
   private
 
   def set_twitter_id
-    @twitter_id = params[:twitter_id]
+    @twitter_id = params[:twitter_id].gsub(/@/, '')
   end
 
   def populate_tweets
