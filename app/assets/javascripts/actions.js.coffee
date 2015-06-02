@@ -6,8 +6,8 @@ attachLookupButtons = ->
     action = $(@).data('action')
     console.log action
     if (handle && handle.length > 0)
-      window.location.replace("/#{action}/#{handle}/")
-      # Turbolinks.visit("/#{action}/#{handle}/")
+      # window.location.replace("/#{action}/#{handle}/")
+      Turbolinks.visit("/#{action}/#{handle}/")
 
   $('#lookup-list').click lookupUser
   $('#lookup-latest').click lookupUser
