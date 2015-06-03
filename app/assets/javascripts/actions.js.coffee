@@ -1,12 +1,13 @@
 attachLookupButtons = ->
   lookupUser = (e) ->
     e.preventDefault()
-    handle = $('#user_twitter_handle').val()
+    entity = 'user'
+    query = $('#user_query_string').val()
     $(@).addClass "active"
     action = $(@).data('action')
-    if (handle && handle.length > 0)
+    if (query && query.length > 0)
       # window.location.replace("/#{action}/#{handle}/")
-      Turbolinks.visit("/#{action}/#{handle}/")
+      Turbolinks.visit("/#{entity}/#{query}/#{action}")
 
   $('#lookup-list').click lookupUser
   $('#lookup-latest').click lookupUser
