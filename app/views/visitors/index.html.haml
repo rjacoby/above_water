@@ -5,5 +5,5 @@
       = simple_form_for :user, url: '#' do |f|
         = f.input :query_string, label: 'Twitter handle:', hint: 'Try @chelseavperetti, she seems to stream often', input_html: { maxlength: 16 }
         .form-group
-          = f.button :button, "List Past 24hrs", class: "btn btn-lg btn-primary", id: "lookup-list", data: { action: :list }
-          = f.button :button, "Watch Latest Now", class: "btn btn-lg btn-success", id: "lookup-latest", data: { action: :latest }
+          = f.button :button, "List Past 24hrs", class: "btn btn-lg btn-primary", id: "lookup-list", data: { entity: :user, action: :list }
+          = f.button :button, "Watch Latest Now", class: "btn btn-lg btn-success", id: "lookup-latest", data: { entity: :user, action: :latest }
