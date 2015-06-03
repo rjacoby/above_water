@@ -1,0 +1,10 @@
+.row
+  .col-md-6
+    - if @embeds.blank?
+      .none-found
+        No recent broadcasts found.
+    - else
+      .tweet-list
+      - @embeds.each do |k,v|
+        .tweet{data: {tweet_id: k}}
+          = raw(v.html)
