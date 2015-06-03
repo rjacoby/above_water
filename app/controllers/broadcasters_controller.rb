@@ -48,9 +48,12 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_hashtag_tweets
+    search_str = "\##{@hashtag} periscope.tv filter:links"
+    Rails.logger.debug("Search String: #{search_str}")
     @tweets = ApplicationController.twitter.search(
-      "\##{@hashtag} periscope.tv filter:links",
-      count: 100
+      search_str,
+      count: 100,
+      result_type: 'recent'
     )
   end
 
@@ -60,7 +63,7 @@ class BroadcastersController < ApplicationController
 
   def tweets_with_periscopes(tweets)
     cutoff_time = 24.hours.ago
-    tweets.select! do |t|
+    tweets.select do |t|
       has_periscope = false
       next if t.created_at < cutoff_time
       t.urls.each do |u|
