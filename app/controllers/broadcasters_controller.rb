@@ -35,7 +35,7 @@ class BroadcastersController < ApplicationController
   end
 
   def set_hashtag
-    @hashtag = params[:hashtag]
+    @hashtag = params[:hashtag] ? params[:hashtag].gsub(/#/, '') : nil
   end
 
   def populate_user_tweets
