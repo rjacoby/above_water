@@ -14,7 +14,8 @@ class BroadcastersController < ApplicationController
 
   def latest
     unless @periscope_tweets.blank?
-      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s
+      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s,
+                  status: 307
     end
   end
 
@@ -24,7 +25,8 @@ class BroadcastersController < ApplicationController
 
   def hashtag_latest
     unless @periscope_tweets.blank?
-      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s
+      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s,
+                  status: 307
     end
   end
 
