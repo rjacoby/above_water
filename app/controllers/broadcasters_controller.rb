@@ -1,6 +1,5 @@
 # Main controller for finding and showing a user's recent Periscopes
 class BroadcastersController < ApplicationController
-  LOOKUP_FREQUENCY_SECONDS = 15
   before_filter :set_twitter_id, only: [:list, :latest]
   before_filter :populate_user_tweets, only: [:list, :latest]
 
@@ -42,19 +41,7 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_user_tweets
-    lookup = Lookup.find_or_create_by(query: "user/#{@twitter_id}")
-    if (lookup.updated_at + LOOKUP_FREQUENCY_SECONDS.seconds).past?
-      Rails.logger.debug 'We would do a lookup'
-      lookup.touch
-    else
-      Rails.logger.debug 'Cached'
-    end
-    @tweets = ApplicationController.twitter.user_timeline(
-      @twitter_id,
-      count: 100,
-      include_rts: false,
-      exclude_replies: true
-    )
+    @tweets = Lookup.tweets_for(params[:twitter_id])
   end
 
   def populate_hashtag_tweets
