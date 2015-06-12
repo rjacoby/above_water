@@ -6,21 +6,19 @@ class BroadcastersController < ApplicationController
   before_filter :set_hashtag, only: [:hashtag_list, :hashtag_latest]
   before_filter :populate_hashtag_tweets, only: [:hashtag_list, :hashtag_latest]
 
-  before_filter :identify_periscope_tweets
+  before_filter :populate_embeds, only: [:list, :hashtag_list]
 
   def list
-    @embeds = embeds(@periscope_tweets)
   end
 
   def latest
     unless @periscope_tweets.blank?
-      redirect_to @periscope_tweets.first.urls.first.expanded_url.to_s,
+      redirect_to @periscope_tweets.first.periscope_url,
                   status: 307
     end
   end
 
   def hashtag_list
-    @embeds = embeds(@periscope_tweets)
   end
 
   def hashtag_latest
@@ -41,9 +39,10 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_user_tweets
-    @tweets = Lookup.tweets_for(params[:twitter_id])
+    @periscope_tweets = Lookup.tweets_for(params[:twitter_id])
   end
 
+  # TODO: Move to model and filter for periscope
   def populate_hashtag_tweets
     search_str = "\##{@hashtag} periscope.tv filter:links"
     Rails.logger.debug("Search String: #{search_str}")
@@ -54,28 +53,9 @@ class BroadcastersController < ApplicationController
     )
   end
 
-  def identify_periscope_tweets
-    @periscope_tweets = tweets_with_periscopes(@tweets)
-  end
-
-  def tweets_with_periscopes(tweets)
-    cutoff_time = 24.hours.ago
-    tweets.select do |t|
-      has_periscope = false
-      next if t.created_at < cutoff_time
-      t.urls.each do |u|
-        if u.expanded_url.to_s.match(/periscope/)
-          has_periscope = true
-          next
-        end
-      end
-      has_periscope
-    end
-  end
-
-  def embeds(tweets)
-    tweets.each_with_object({}) do |t, h|
-      h[t.id] = ApplicationController.twitter.oembed(t.id)
+  def populate_embeds
+    @embeds = @periscope_tweets.each_with_object({}) do |t, h|
+      h[t.tweet_id] = t.hydrate
     end
   end
 end

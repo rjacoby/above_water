@@ -7,4 +7,4 @@
       .tweet-list
       - @embeds.each do |k,v|
         .tweet{data: {tweet_id: k}}
-          = raw(v.html)
+          = raw(v)
