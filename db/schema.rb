@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 20150604225850) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "tweets", ["tweet_id"], name: "index_tweets_on_tweet_id", unique: true, using: :btree
+  add_index "tweets", ["lookup_id", "tweet_id"], name: "index_tweets_on_lookup_id_and_tweet_id", unique: true, using: :btree
+  add_index "tweets", ["tweet_id"], name: "index_tweets_on_tweet_id", using: :btree
 
   add_foreign_key "tweets", "lookups"
 end

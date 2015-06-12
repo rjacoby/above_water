@@ -10,6 +10,7 @@ class CreateTweets < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_foreign_key :tweets, :lookups
-    add_index :tweets, :tweet_id, unique: true
+    add_index :tweets, [:lookup_id, :tweet_id], unique: true
+    add_index :tweets, :tweet_id
   end
 end
