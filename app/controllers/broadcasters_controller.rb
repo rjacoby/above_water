@@ -42,7 +42,7 @@ class BroadcastersController < ApplicationController
     @periscope_tweets = Lookup.tweets_for(params[:twitter_id])
   end
 
-  # TODO: Move to model and filter for periscope
+  # FIXME: Move to model and filter for periscope - doesn't work now, but is disabled
   def populate_hashtag_tweets
     search_str = "\##{@hashtag} periscope.tv filter:links"
     Rails.logger.debug("Search String: #{search_str}")
