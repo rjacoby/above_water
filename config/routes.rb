@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   get '/u/:twitter_id', to: 'broadcasters#latest'
   get '/user/:twitter_id', to: 'broadcasters#latest'
   get '/user/:twitter_id/latest', to: 'broadcasters#latest'
+  get '/u/:twitter_id/list', to: 'broadcasters#list'
   get '/user/:twitter_id/list', to: 'broadcasters#list'
 
   get '/ch/:channel', to: 'broadcasters#channel_latest'
   get '/channel/:channel', to: 'broadcasters#channel_latest'
   get '/channel/:channel/latest', to: 'broadcasters#channel_latest'
+  get '/ch/:channel/list', to: 'broadcasters#channel_list'
   get '/channel/:channel/list', to: 'broadcasters#channel_list'
 
   # get '/hashtag/:hashtag', to: 'broadcasters#hashtag_list'
