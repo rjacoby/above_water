@@ -25,30 +25,35 @@ class Lookup < ActiveRecord::Base
         opts_hash
       )
       if tweets.present?
-        ActiveRecord::Base.transaction do
-          # Do as a bulk transaction to save a lil speed
-          tweets.each do |t|
-            periscope_url = nil
-            t.urls.each do |u|
-              current_url = u.expanded_url.to_s
-              if current_url.to_s.match(/periscope/)
-                periscope_url = current_url
-                next
+        begin
+          ActiveRecord::Base.transaction do
+            # Do as a bulk transaction to save a lil speed
+            tweets.each do |t|
+              periscope_url = nil
+              t.urls.each do |u|
+                current_url = u.expanded_url.to_s
+                if current_url.to_s.match(/periscope/)
+                  periscope_url = current_url
+                  next
+                end
+              end
+              if periscope_url
+                Tweet.create(
+                  lookup: lookup,
+                  tweet_id: t.id,
+                  tweeted_at: t.created_at,
+                  periscope_url: periscope_url
+                )
               end
             end
-            if periscope_url
-              Tweet.create(
-                lookup: lookup,
-                tweet_id: t.id,
-                tweeted_at: t.created_at,
-                periscope_url: periscope_url
-              )
-            end
+            lookup.update_attribute(:since_id, tweets.first.id)
           end
-          lookup.update_attribute(:since_id, tweets.first.id)
+        rescue => e
+          Rails.logger.error "Error writing: #{e.message}"
         end
       else
-        # We didn't get new tweets b/c there aren't any. Mark as recently checked.
+        # We didn't get new tweets b/c there aren't any.
+        # Mark as recently checked.
         lookup.touch
       end
     else
