@@ -63,4 +63,13 @@ class Lookup < ActiveRecord::Base
     end
     lookup.valid_tweets
   end
+
+  def self.channel_tweets(channel)
+    # TODO: Do we need to cache at this level? The per-user lookups handle it.
+    all_tweets = WhitelistUser.channel_handles(channel).each_with_object([]) do |handle, tweets|
+      tweets << tweets_for(handle).to_a
+    end
+    all_tweets.flatten!.sort! { |a, b| b.tweeted_at <=> a.tweeted_at }
+    all_tweets
+  end
 end

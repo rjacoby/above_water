@@ -8,3 +8,7 @@ AllCops:
    - 'db/seeds.rb'
    - 'db/schema.rb'
    - 'vendor/bundle/**/*'
+Metrics/LineLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false

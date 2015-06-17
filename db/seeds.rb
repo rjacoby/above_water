@@ -31,13 +31,13 @@ cannes_tweeps = [
 ]
 
 testers.each do |handle|
-  WhitelistUser.create(handle: handle.downcase, group: 'testers')
+  WhitelistUser.create(handle: handle.downcase, channel: 'testers')
 end
 
 cannes_hosts.each do |handle|
-  WhitelistUser.create(handle: handle.downcase, group: 'cannes')
+  WhitelistUser.create(handle: handle.downcase, channel: 'cannes')
 end
 
 cannes_tweeps.each do |handle|
-  WhitelistUser.create(handle: handle.downcase, group: 'tweeps')
+  WhitelistUser.create(handle: handle.downcase, channel: 'tweeps')
 end

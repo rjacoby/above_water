@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20150617174358) do
     t.string   "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "group"
+    t.string   "channel"
   end
 
-  add_index "whitelist_users", ["group"], name: "index_whitelist_users_on_group", using: :btree
+  add_index "whitelist_users", ["channel"], name: "index_whitelist_users_on_channel", using: :btree
   add_index "whitelist_users", ["handle"], name: "index_whitelist_users_on_handle", unique: true, using: :btree
 
   add_foreign_key "tweets", "lookups"
