@@ -1,12 +1,16 @@
 .container
   .row
-    %h2 Lookup a Periscope User
+    %h3 Thanks for your interest!
     .col-md-6
-      = simple_form_for :user, url: '#' do |f|
-        = f.input :query_string, label: 'Twitter handle:', hint: 'Try @sportscenter, they seem to stream often', input_html: { maxlength: 16 }
-        .form-group
-          = f.button :button, "List Past 24hrs", class: "btn btn-lg btn-primary", id: "user-list", data: { entity: :user, action: :list }
-          = f.button :button, "Watch Latest Now", class: "btn btn-lg btn-success", id: "user-latest", data: { entity: :user, action: :latest }
+      Above Water is currently only available for select @handles.
+  -# .row
+  -#   %h2 Lookup a Periscope User
+  -#   .col-md-6
+  -#     = simple_form_for :user, url: '#' do |f|
+  -#       = f.input :query_string, label: 'Twitter handle:', hint: 'Try @sportscenter, they seem to stream often', input_html: { maxlength: 16 }
+  -#       .form-group
+  -#         = f.button :button, "List Past 24hrs", class: "btn btn-lg btn-primary", id: "user-list", data: { entity: :user, action: :list }
+  -#         = f.button :button, "Watch Latest Now", class: "btn btn-lg btn-success", id: "user-latest", data: { entity: :user, action: :latest }
   -# .row
   -#   %h2 Lookup a #hashtag
   -#   .col-md-6
