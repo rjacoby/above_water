@@ -7,9 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file .env file.
 
-whitelist = [
+testers = [
   'rjacoby',
-  'hoff',
+  'rchoi',
+  'joncipriano',
+  'sethrobot',
+  'donkeyattack',
+  'sanjm',
+  '_superted',
+  'kayvz'
+]
+
+cannes_hosts = [
   'Cannes_Lions',
   'ROBBYJAYALA',
   'JackBethmann',
@@ -17,6 +26,18 @@ whitelist = [
   'cody'
 ]
 
-whitelist.each do |handle|
-  WhitelistUser.create(handle: handle.downcase)
+cannes_tweeps = [
+  'hoff'
+]
+
+testers.each do |handle|
+  WhitelistUser.create(handle: handle.downcase, group: 'testers')
+end
+
+cannes_hosts.each do |handle|
+  WhitelistUser.create(handle: handle.downcase, group: 'cannes')
+end
+
+cannes_tweeps.each do |handle|
+  WhitelistUser.create(handle: handle.downcase, group: 'tweeps')
 end

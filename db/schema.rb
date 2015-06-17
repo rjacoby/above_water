@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617154254) do
+ActiveRecord::Schema.define(version: 20150617174358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20150617154254) do
     t.string   "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "group"
   end
 
+  add_index "whitelist_users", ["group"], name: "index_whitelist_users_on_group", using: :btree
   add_index "whitelist_users", ["handle"], name: "index_whitelist_users_on_handle", unique: true, using: :btree
 
   add_foreign_key "tweets", "lookups"
