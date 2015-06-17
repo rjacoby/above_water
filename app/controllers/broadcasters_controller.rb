@@ -1,6 +1,11 @@
 # Main controller for finding and showing a user's recent Periscopes
 class BroadcastersController < ApplicationController
+  @@whitelist = WhitelistUser.all_handles
+  @@whitelist_updated_at = Time.now
+
   before_filter :set_twitter_id, only: [:list, :latest]
+  before_filter :check_whitelist, only: [:list, :latest]
+
   before_filter :populate_user_tweets, only: [:list, :latest]
 
   before_filter :set_hashtag, only: [:hashtag_list, :hashtag_latest]
@@ -31,7 +36,18 @@ class BroadcastersController < ApplicationController
   private
 
   def set_twitter_id
-    @twitter_id = params[:twitter_id] ? params[:twitter_id].gsub(/@/, '') : nil
+    @twitter_id = params[:twitter_id] ? params[:twitter_id].gsub(/@/, '').downcase : nil
+  end
+
+  def check_whitelist
+    now = Time.now
+    if (@@whitelist_updated_at + 1.minute) < now
+      # Refresh from DB every minute
+      Rails.logger.debug('Updating whitelist from DB')
+      @@whitelist = WhitelistUser.all_handles
+      @@whitelist_updated_at = now
+    end
+    redirect_to '/' unless @@whitelist.include?(@twitter_id)
   end
 
   def set_hashtag
@@ -39,7 +55,7 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_user_tweets
-    @periscope_tweets = Lookup.tweets_for(params[:twitter_id])
+    @periscope_tweets = Lookup.tweets_for(@twitter_id)
   end
 
   # FIXME: Move to model and filter for periscope - doesn't work now, but is disabled

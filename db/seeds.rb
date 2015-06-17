@@ -6,3 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file .env file.
+
+whitelist = [
+  'rjacoby',
+  'hoff',
+  'Cannes_Lions',
+  'ROBBYJAYALA',
+  'JackBethmann',
+  'Sayhop',
+  'cody'
+]
+
+whitelist.each do |handle|
+  WhitelistUser.create(handle: handle.downcase)
+end

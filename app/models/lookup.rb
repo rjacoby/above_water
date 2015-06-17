@@ -5,7 +5,9 @@ class Lookup < ActiveRecord::Base
   has_many :tweets
 
   def valid_tweets
-    Tweet.where('tweeted_at >= ?', 24.hours.ago).order('tweeted_at DESC')
+    Tweet.where('lookup_id = ?', id)
+      .where('tweeted_at >= ?', 24.hours.ago)
+      .order('tweeted_at DESC')
   end
 
   def self.tweets_for(twitter_id)
