@@ -46,6 +46,7 @@ group :development, :test do
 end
 group :production do
   gem 'rails_12factor'
+  gem 'rack-timeout'
 end
 group :test do
   gem 'capybara'
