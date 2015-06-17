@@ -32,11 +32,13 @@ class Lookup < ActiveRecord::Base
             # Do as a bulk transaction to save a lil speed
             tweets.each do |t|
               periscope_url = nil
-              t.urls.each do |u|
-                current_url = u.expanded_url.to_s
-                if current_url.to_s.match(/periscope/)
-                  periscope_url = current_url
-                  next
+              if t.source.match(/periscope\.tv/)
+                t.urls.each do |u|
+                  current_url = u.expanded_url.to_s
+                  if current_url.to_s.match(/periscope\.tv/)
+                    periscope_url = current_url
+                    next
+                  end
                 end
               end
               if periscope_url
@@ -50,8 +52,8 @@ class Lookup < ActiveRecord::Base
             end
             lookup.update_attribute(:since_id, tweets.first.id)
           end
-        rescue => e
-          Rails.logger.error "Error writing: #{e.message}"
+        # rescue => e
+        #   Rails.logger.error "Error writing: #{e.message}"
         end
       else
         # We didn't get new tweets b/c there aren't any.
