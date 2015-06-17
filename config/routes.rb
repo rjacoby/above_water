@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/user/:twitter_id', to: 'broadcasters#list'
+  get '/user/:twitter_id', to: 'broadcasters#latest'
   get '/user/:twitter_id/list', to: 'broadcasters#list'
   get '/user/:twitter_id/latest', to: 'broadcasters#latest'
 
@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   # Legacy from initial internal share
   get '/list/:twitter_id', to: 'broadcasters#list'
   get '/latest/:twitter_id', to: 'broadcasters#latest'
+
+  # Rescue everything to root
+  get '*path', to: redirect('/') unless Rails.env.development?
 end
