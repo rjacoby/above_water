@@ -18,6 +18,6 @@
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
-    %footer.footer
+    %footer.footer{class: !(@periscope_tweets.blank?) && 'listview'}
       = image_tag('tw-logo.png', {class: 'twitter-logo'})
       %p.copyright &copy; 2015 Twitter, Inc.
