@@ -1,0 +1,87 @@
+body {
+  background-color: #F7F7F7;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  h1 {
+    font-size: 26px;
+    color: #868686;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 16px;
+    color: #868686;
+    line-height: 20px;
+    text-align: center;
+    margin: auto 10%;
+  }
+
+  .header {
+    background-color: #E4E2E2;
+    padding: 8px 0;
+
+    border:solid;
+    border-bottom-width: 40px;
+    border-image: image-url('waterheader.png') 0 0 375 0 repeat;
+
+    .header-group {
+      width: 166px;
+      .header-item {
+        margin: 0 4px;
+        display: inline-block;
+        vertical-align: top;
+
+        .periscope-logo {
+          float: none;
+          width: 29px;
+          height: 38px;
+        }
+        .title {
+          text-align: left;
+          font-size: 21px;
+          color: #B0A8A8;
+          line-height: 30px;
+        }
+      }
+    }
+  } // .header
+
+  main {
+    .thanks-image {
+      width: 156px;
+      height: 83px;
+    }
+  }
+
+} // body
+
+// /* Above Water: */   Title
+// font-family: Helvetica-Light;
+// font-size: 21px;
+// color: #B0A8A8;
+// line-height: 24px;
+//
+// /* No Periscopes: */  Header
+// font-family: Helvetica-Light;
+// font-size: 26px;
+// color: #868686;
+// line-height: 24px;
+//
+// /* No recent broadcasts: */  Body Copy
+// font-family: Helvetica-Light;
+// font-size: 16px;
+// color: #868686;
+// line-height: 20px;
+//
+// /* @hoff: */  Link
+// font-family: Helvetica-Light;
+// font-size: 26px;
+// color: #337AB7;
+// line-height: 24px;
+//
+// /* ©2015 Twitter, Inc : */
+// font-family: Helvetica-Light;
+// font-size: 10px;
+// color: #868686;
+// line-height: 20px;
