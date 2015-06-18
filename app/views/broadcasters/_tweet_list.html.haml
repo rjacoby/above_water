@@ -1,3 +1,8 @@
+.list-header
+  = image_tag("list-icon.png", {class: 'list-icon'})
+  .list-header-text
+    %h1 #{object_title}
+    %h2 Recent Periscopes
 .row
   .tweet-list
   - @embeds.each do |k,v|
