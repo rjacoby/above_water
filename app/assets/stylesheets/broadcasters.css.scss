@@ -1,11 +1,12 @@
 body {
   background-color: #F7F7F7;
+  color: #B0A8A8;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
   h1 {
     font-size: 26px;
     color: #868686;
-    line-height: 20px;
+    line-height: 24px;
     text-align: center;
   }
 
@@ -40,7 +41,6 @@ body {
         .title {
           text-align: left;
           font-size: 21px;
-          color: #B0A8A8;
           line-height: 30px;
         }
       }
@@ -54,34 +54,30 @@ body {
     }
   }
 
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+
+    .twitter-logo {
+      // width: 24px;
+      // height: 21px;
+      margin-bottom: 8px;
+    }
+
+    .copyright {
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+
 } // body
 
-// /* Above Water: */   Title
-// font-family: Helvetica-Light;
-// font-size: 21px;
-// color: #B0A8A8;
-// line-height: 24px;
-//
-// /* No Periscopes: */  Header
-// font-family: Helvetica-Light;
-// font-size: 26px;
-// color: #868686;
-// line-height: 24px;
-//
-// /* No recent broadcasts: */  Body Copy
-// font-family: Helvetica-Light;
-// font-size: 16px;
-// color: #868686;
-// line-height: 20px;
+
 //
 // /* @hoff: */  Link
 // font-family: Helvetica-Light;
 // font-size: 26px;
 // color: #337AB7;
 // line-height: 24px;
-//
-// /* ©2015 Twitter, Inc : */
-// font-family: Helvetica-Light;
-// font-size: 10px;
-// color: #868686;
-// line-height: 20px;

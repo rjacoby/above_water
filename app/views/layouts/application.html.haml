@@ -12,9 +12,12 @@
     .row.header
       .header-group.center-block
         .header-item
-          = image_tag("p-logo.png", {class: 'periscope-logo'})
+          = image_tag('p-logo.png', {class: 'periscope-logo'})
         .header-item
           .title Above Water
     %main{:role => "main"}
       = render 'layouts/messages'
       = yield
+    %footer.footer
+      = image_tag('tw-logo.png', {class: 'twitter-logo'})
+      %p.copyright &copy; 2015 Twitter, Inc.
