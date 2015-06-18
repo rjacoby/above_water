@@ -1,6 +1,6 @@
 .container
   - if @embeds.blank?
-    = render partial: 'none_found'
+    = render partial: 'none_found', locals: {object_not_found: (link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}")}
   - else
     %h2 Periscope Streams for #{link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}"}
     = render partial: 'tweet_list'

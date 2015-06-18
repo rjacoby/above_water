@@ -1,3 +1,6 @@
 .container
-  %h2 Periscope Streams for channel #{@channel}
-  = render partial: 'tweet_list'
+  - if @embeds.blank?
+    = render partial: 'none_found', locals: {object_not_found: "the #{@channel.capitalize} channel"}
+  - else
+    %h2 Periscope Streams for channel #{@channel}
+    = render partial: 'tweet_list'
