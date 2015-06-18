@@ -1,3 +1,6 @@
 .container
-  %h2 Periscope Streams for #{link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}"}
-  = render partial: 'tweet_list'
+  - if @embeds.blank?
+    = render partial: 'none_found'
+  - else
+    %h2 Periscope Streams for #{link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}"}
+    = render partial: 'tweet_list'

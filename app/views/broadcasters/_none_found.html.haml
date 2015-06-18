@@ -1,0 +1,8 @@
+.none-found
+  .row
+    .main-image.center-block
+      = image_tag("noperiscopes.png", {class: 'noperiscopes-image'})
+  .row
+    %h1 No Periscopes
+    %h2 No recent broadcasts are available for #{link_to "@#{@twitter_id}", "https://twitter.com/#{@twitter_id}"}
+    %h2 Try again later.
