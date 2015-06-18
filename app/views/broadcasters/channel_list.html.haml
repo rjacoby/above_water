@@ -2,5 +2,9 @@
   - if @embeds.blank?
     = render partial: 'none_found', locals: {object_not_found: "the #{@channel.capitalize} channel"}
   - else
-    %h2 Periscope Streams for channel #{@channel}
+    .list-header
+      = image_tag("list-icon.png", {class: 'list-icon'})
+      .list-header-text
+        %h1 #{@channel.capitalize} Channel
+        %h2 Recent Periscopes
     = render partial: 'tweet_list'

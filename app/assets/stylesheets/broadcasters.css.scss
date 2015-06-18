@@ -62,6 +62,25 @@ body {
         margin: auto 13%;
       }
     }
+
+    .list-header {
+      width: 100%;
+
+      .list-icon {
+        width: 44px;
+        height: 45px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .list-header-text {
+        display: inline-block;
+        h1, h2 {
+          text-align: left;
+          vertical-align: top;
+          margin: 0px auto;
+        }
+      }
+    }
   }
 
   .footer {
@@ -71,8 +90,8 @@ body {
     text-align: center;
 
     .twitter-logo {
-      width: 130px;
-      height: 106px;
+      width: 24px;
+      height: 21px;
       margin-bottom: 8px;
     }
 
@@ -83,11 +102,3 @@ body {
   }
 
 } // body
-
-
-//
-// /* @hoff: */  Link
-// font-family: Helvetica-Light;
-// font-size: 26px;
-// color: #337AB7;
-// line-height: 24px;
