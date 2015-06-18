@@ -1,2 +1,2 @@
 .container
-  %h2 No recent broadcasts for channel #{@channel}
+  = render partial: 'none_found', locals: {object_not_found: "the #{@channel.capitalize} channel"}
