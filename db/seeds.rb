@@ -15,8 +15,13 @@ testers = [
   'donkeyattack',
   'sanjm',
   '_superted',
-  'kayvz'
+  'kayvz',
+  'sportscenter'
 ]
+
+testers.each do |handle|
+  WhitelistUser.create(handle: handle.downcase, channel: 'testers')
+end
 
 cannes_hosts = [
   'Cannes_Lions',
@@ -26,17 +31,26 @@ cannes_hosts = [
   'cody'
 ]
 
-cannes_tweeps = [
-  'hoff'
-]
-
-testers.each do |handle|
-  WhitelistUser.create(handle: handle.downcase, channel: 'testers')
-end
-
 cannes_hosts.each do |handle|
   WhitelistUser.create(handle: handle.downcase, channel: 'cannes')
 end
+
+
+upandaway = [
+  'TweetSuite_Cannes',
+  'TwitterBeach_Cannes',
+  'TwitterBeach_CannesLions',
+  'Twitter_CannesLions',
+  'Twitter_Cannes'
+]
+
+upandaway.each do |handle|
+  WhitelistUser.create(handle: handle.downcase, channel: 'upandaway')
+end
+
+cannes_tweeps = [
+  'hoff'
+]
 
 cannes_tweeps.each do |handle|
   WhitelistUser.create(handle: handle.downcase, channel: 'tweeps')

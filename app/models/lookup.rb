@@ -22,10 +22,14 @@ class Lookup < ActiveRecord::Base
         exclude_replies: true
       }
       opts_hash[:since_id] = lookup.since_id if lookup.since_id.present?
-      tweets = ApplicationController.twitter.user_timeline(
-        twitter_id,
-        opts_hash
-      )
+      begin
+        tweets = ApplicationController.twitter.user_timeline(
+          twitter_id,
+          opts_hash
+        )
+      rescue Twitter::Error
+        # Ignore missing handles and such
+      end
       if tweets.present?
         begin
           ActiveRecord::Base.transaction do
