@@ -1,12 +1,12 @@
 namespace :export do
   desc "Print out links to all whitelisted users"
   task all: :environment do
-    puts "<ul>"
+    puts "<dl>"
     WhitelistUser.all_channels.each_pair do |key, val|
-      puts "<li>Channel: #{key}</li><ul>"
-      puts "<li><a href='http://abovewater.io/ch/#{key}'>http://abovewater.io/ch/#{key}</a></li>"
-      puts "<li><a href='http://abovewater.io/ch/#{key}/list'>http://abovewater.io/ch/#{key}/list</a></li>"
-      puts "<li>Members:"
+      puts "<dt>Channel: #{key}</dt>"
+      puts "<dd><a href='http://abovewater.io/ch/#{key}'>http://abovewater.io/ch/#{key}</a></dd>"
+      puts "<dd><a href='http://abovewater.io/ch/#{key}/list'>http://abovewater.io/ch/#{key}/list</a></dd>"
+      puts "<dd>Members:"
       val.each do |user|
         puts "<dl>"
         puts "<dt>#{user}</dt>"
@@ -14,9 +14,9 @@ namespace :export do
         puts "<dd><a href='http://abovewater.io/u/#{user}/list'>http://abovewater.io/u/#{user}/list</a></dd>"
         puts "</dl>"
       end
-      puts "</li></ul>"
+      puts "</dd>"
     end
-    puts "</ul>"
+    puts "</dl>"
   end
 
 end
