@@ -17,7 +17,7 @@ class Lookup < ActiveRecord::Base
        (lookup.updated_at + LOOKUP_FREQUENCY_SECONDS.seconds).past?
       Rails.logger.debug "Fetching Tweets from API for @#{twitter_id}"
       opts_hash = {
-        count: 100,
+        count: 50,
         include_rts: false,
         exclude_replies: true
       }
