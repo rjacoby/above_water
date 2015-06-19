@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'twitter'
+gem 'clockwork'
+gem 'delayed_job_active_record'
 group :development do
   gem 'better_errors'
   gem 'foreman'

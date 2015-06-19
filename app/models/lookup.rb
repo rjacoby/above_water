@@ -35,6 +35,7 @@ class Lookup < ActiveRecord::Base
           ActiveRecord::Base.transaction do
             # Do as a bulk transaction to save a lil speed
             tweets.each do |t|
+              next if t.created_at <= 24.hours.ago
               periscope_url = nil
               if t.source.match(/periscope\.tv/)
                 t.urls.each do |u|
