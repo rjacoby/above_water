@@ -77,7 +77,9 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_user_tweets
-    @periscope_tweets = Lookup.tweets_for(@twitter_id)
+    if (lookup = Lookup.find_by_twitter_id(@twitter_id))
+      @periscope_tweets = lookup.valid_tweets
+    end
   end
 
   def populate_channel_tweets
