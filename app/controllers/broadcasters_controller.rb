@@ -98,8 +98,10 @@ class BroadcastersController < ApplicationController
   end
 
   def populate_embeds
-    @embeds = @periscope_tweets.each_with_object({}) do |t, h|
-      h[t.tweet_id] = t.hydrate
+    if @periscope_tweets
+      @embeds = @periscope_tweets.each_with_object({}) do |t, h|
+        h[t.tweet_id] = t.hydrate
+      end
     end
   end
 
