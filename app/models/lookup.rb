@@ -30,8 +30,9 @@ class Lookup < ActiveRecord::Base
         twitter_id,
         opts_hash
       )
-    rescue Twitter::Error
+    rescue Twitter::Error => e
       # Ignore missing handles and such
+      Rails.logger.error(e.message)
     end
     if tweets.present?
       begin
