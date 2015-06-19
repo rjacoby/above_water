@@ -62,11 +62,7 @@ class BroadcastersController < ApplicationController
   def build_channels
     now = Time.now
     if (@@channels_updated_at + 1.minute) < now
-      @@channels = WhitelistUser.all.each_with_object({}) do |user, channel_hash|
-        channel = channel_hash[user.channel] || []
-        channel << user.handle
-        channel_hash[user.channel] = channel
-      end
+      @@channels = WhitelistUser.all_channels
       @@channels_updated_at = now
     end
     redirect_to '/' unless @@channels.keys.include?(@channel)
