@@ -16,7 +16,8 @@ testers = [
   'sanjm',
   '_superted',
   'kayvz',
-  'sportscenter'
+  'sportscenter',
+  'midnight'
 ]
 
 testers.each do |handle|
