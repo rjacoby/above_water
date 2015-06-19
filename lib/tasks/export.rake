@@ -9,7 +9,7 @@ namespace :export do
       puts "<dd>Members:"
       val.each do |user|
         puts "<dl>"
-        puts "<dt>#{user}</dt>"
+        puts "<dt>- #{user}</dt>"
         puts "<dd><a href='http://abovewater.io/u/#{user}'>http://abovewater.io/u/#{user}</a></dd>"
         puts "<dd><a href='http://abovewater.io/u/#{user}/list'>http://abovewater.io/u/#{user}/list</a></dd>"
         puts "</dl>"
