@@ -120,3 +120,7 @@ cannes_tweeps = [
 cannes_tweeps.each do |handle|
   WhitelistUser.create(handle: handle.downcase, channel: 'tweeps')
 end
+
+%w(periscope_up periscope_down periscope_high).each do |handle|
+  WhitelistUser.create(handle: handle.downcase, channel: 'upandaway')
+end
