@@ -49,6 +49,10 @@ upandaway.each do |handle|
   WhitelistUser.create(handle: handle.downcase, channel: 'upandaway')
 end
 
+upandaway.each do |handle|
+  WhitelistUser.find_by_handle(handle.downcase).delete
+end
+
 cannes_tweeps = [
   'jpmaheu',
   'roter',
@@ -122,5 +126,9 @@ cannes_tweeps.each do |handle|
 end
 
 %w(periscope_up periscope_down periscope_high).each do |handle|
+  WhitelistUser.create(handle: handle.downcase, channel: 'upandaway')
+end
+
+%w(periscope_view scopetheview).each do |handle|
   WhitelistUser.create(handle: handle.downcase, channel: 'upandaway')
 end
